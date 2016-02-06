@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Elizabeth Heth</title>
+    <link rel="stylesheet" href="../styles/bio.css">
+    <script src="../scripts/vendor/popmotion.global.js"></script>
+  </head>
+  <body>
+    <main>
+      <div id="backPattern" class="lighten">
+        <div id="subhead">the art of</div>
+        <div id="mainhead"><h2>Elizabeth Heth</h2></div>
+        <nav id="menu-container">
+
+          <svg id="menu-box" height="100" width="650" viewBox="0 0 650 100">
+            <text id="label1" class="menuLabel" x="0" y="25" font-family="Lato" font-size="30" fill="darkorange" ><a>Biography</a></text>
+            <text id="label2" class="menuLabel" x="190" y="25" font-family="Lato" font-size="30" fill="deeppink"><a href="index_old.html">Exhibition</a></text>
+            <text id="label3" class="menuLabel" x="400" y="25" font-family="Lato" font-size="30" fill="springgreen">Works</text>
+            <text id="label4" class="menuLabel" x="550" y="25" font-family="Lato" font-size="30" fill="dodgerblue">Contact</text>
+          </svg>
+          <svg id="menu" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="48" fill="none" stroke="white" stroke-width="4"></circle>
+            <line id="middle-bar" x1="26" x2="74" y1="50" y2="50" stroke="white" stroke-width="4"></line>
+            <line id="top-bar" x1="26" x2="74" y1="26" y2="26" stroke="white" stroke-width="4"></line>
+            <line id="bottom-bar" x1="26" x2="74" y1="74" y2="74" stroke="white" stroke-width="4"></line>
+          </svg>
+
+        </nav>
+
+      <section>
+        <div id='sidebar'>
+          <img id="sleeping-cat" alt="painting of cat on a couch" src="../images/sleeping_cat.jpg" width="100%"/>
+          <img id="sofa" alt="painting of a livingroom couch" src="../images/sofa.jpg" width="100%"/>
+        </div>
+        <div id='mainbar'>
+
+          In nam summo soluta labore. Pro elit choro dolores in. No qui nobis soleat ubique. Mel accusam intellegat voluptatibus an, graece putant assueverit id qui. At nulla meliore conceptam has. Ius eruditi molestie ponderum at, fuisset ponderum ut quo.
+
+<p>Solum qualisque explicari sed ea, alii lucilius abhorreant no nec. Ex sale euismod mandamus quo, tacimates repudiandae at eum. Facer definiebas mediocritatem cu eum, est et movet platonem inimicus, quidam option qui ne. Nam ut vero detracto. Eu mei dicunt volumus euripidis. Apeirian sensibus nam et, duo postea eirmod id. Ex qui erant lobortis, sea no dicunt accusamus.
+
+<p>Ius vituperata intellegam ut, ne esse oratio ius. Tale mediocrem ex quo, eum eu dicant cetero sapientem. Sit ea feugait noluisse. Est in veniam soluta populo, est at menandri conceptam. No vim modus novum consul. Ad usu abhorreant assueverit, te liber dolor accusata pro.
+        </div>
+      </secton>
+
+      </div>
+    </main>
+<!--    <script src="../scripts/bundle.js"></script> -->
+    <script>
+      var backgroundCover = document.getElementById("backPattern");
+      var backgroundCoverActor = new ui.Actor({
+        element: backgroundCover,
+        as: ui.css.map({backgroundcolor: 'background-color'}),
+        values: {
+          backgroundcolor: '#808080'
+        }
+      });
+      var backgroundFadeIn = new ui.Tween({
+        duration: 200,
+        values: {
+          backgroundcolor: '#fff'
+        }
+      });
+
+      backgroundCoverActor.start(backgroundFadeIn);
+
+    </script>
+  </body>
+</html>

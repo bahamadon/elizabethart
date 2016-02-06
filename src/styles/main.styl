@@ -1,0 +1,114 @@
+@import "kouto-swiss"
+@import url(http://fonts.googleapis.com/css?family=Lato:400,900&subset=latin)
+
+@keyframes swipe-across
+  0%
+    left 10px
+  100%
+    left 750px
+
+@keyframes swipe-back
+  0%
+    left 750px
+  100%
+    left 10px
+
+@keyframes fade-in
+  0%
+    opacity 0
+  100%
+    opacity 1
+
+@keyframes fade-out
+  0%
+    opacity 1
+  100%
+    opacity 0
+
+@keyframes shade-out
+  0%
+    background-color #7f7f7f
+  100%
+    background-color #575757
+
+@keyframes tint-in
+  0%
+    background-color #575757
+  100%
+    background-color #7f7f7f
+
+darken = 0.8
+darkenOverlay = rgba(0, 0, 0, darken)
+
+
+#backSplash
+  background-image  linear-gradient( darkenOverlay, darkenOverlay ), url(../images/trimmedPainting.jpg)
+  background-color #7f7f7f
+  background-blend-mode overlay
+  background-size cover
+  height 100vh
+  font-family: 'Lato', sans-serif
+  position relative
+  &.opening
+    animation shade-out 1s linear forwards
+  &.closing
+    animation tint-in 0.5s linear forwards
+
+  #subhead
+    font-weigth 400
+    font-size 2rem
+    color white
+    position absolute
+    top 20%
+    left 10%
+
+  #mainhead
+    font-weight: 900
+    color: white
+    text-transform: uppercase
+    font-size: 5rem
+    position absolute
+    top 10%
+    left 10%
+
+  #menu-container
+    position absolute
+    left 20px
+    top 25px
+    width 50px
+    height 50px
+    opacity 0.75
+
+  #menu-box
+    position absolute
+    left 50px
+    top 10px
+
+  text.menuLabel
+    opacity 0
+    pointer-events none
+    &:hover
+      cursor crosshair
+      pointer-events auto
+    &.opening
+      animation fade-in 1s linear forwards
+      pointer-events auto
+    &.closing
+      animation fade-out 0.25s linear forwards
+      pointer-events none
+
+
+
+  #menu-symbol
+    position relative
+    left 10px
+    &.opening
+      animation swipe-across 0.5s linear
+      animation-fill-mode forwards
+    &.closing
+      animation swipe-back 0.25s linear
+      animation-fill-mode forwards
+
+
+
+p(golden-ratio(16px, -1))
