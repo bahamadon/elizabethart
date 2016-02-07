@@ -77,7 +77,8 @@
       var navListLength = navList.length, navi;
       for (navi = 0; navi < navListLength; ++navi) {
         navList[navi].addEventListener('click', (function () {
-          var dest = navList[navi].dataset.href;
+//          var dest = navList[navi].dataset.href;
+            var dest = navList[navi].getAttribute("data-href");
           return function (e) {
             moveMenu();
             topElem.addEventListener('webkitAnimationEnd', function (e) {
