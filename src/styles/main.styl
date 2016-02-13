@@ -123,6 +123,23 @@ darkenOverlay = rgba(0, 0, 0, darken)
       animation swipe-back 0.25s linear
       animation-fill-mode forwards
 
+    #rightpointer
+      opacity 1
+      &.opening
+        animation fade-out 0.25s linear
+        animation-fill-mode forwards
+      &.closing
+        animation fade-in 0.5s linear
+        animation-fill-mode forwards
+    #leftpointer
+      opacity 0
+      &.opening
+        animation fade-in 0.25s linear
+        animation-fill-mode forwards
+      &.closing
+        animation fade-out 0.5s linear
+        animation-fill-mode forwards
+
 
 
 p(golden-ratio(16px, -1))

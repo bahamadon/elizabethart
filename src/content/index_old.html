@@ -3,27 +3,132 @@
   <head>
     <meta charset="utf-8">
     <title>Exhibitions</title>
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="../styles/main.css">
   </head>
   <body>
     <header>
-      <nav role="navigation">
-        <ul id="js-centered-navigation-menu" class="centered-navigation-menu show">
-          <li class="nav-link"><a class="scroll-on-page-link" href="#upcoming">Upcoming Events</a></li>
-          <li class="nav-link"><a class="scroll-on-page-link" href="#activities">Club Activities</a></li>
-          <li class="nav-link logo">
-          </li>
-          <li class="nav-link"><a class="scroll-on-page-link" href="#news">News</a></li>
-          <li class="nav-link"><a class="scroll-on-page-link" href="#membership">Membership Information</a></li>
-        </ul>
-      </nav>
+
     </header>
     <main>
       <div id="backSplash" class="darken">
-        <div id="menu"></div>
-        <div id="subhead">the gallery art of</div>
+        <div id="subhead">the art of</div>
         <div id="mainhead"><h2>Elizabeth Heth</h2></div>
+        <div id="menu-container">
+          <svg id="menu-box" height="100" width="750" viewBox="0 0 750 100">
+            <text id="label1" class="menuLabel dynamicMenu" data-href="content/biography.html" x="30" y="25" font-family="Lato" font-size="30" fill="darkorange" >Biography</text>
+            <text id="label2" class="menuLabel dynamicMenu" data-href="content/exhibition.html" x="220" y="25" font-family="Lato" font-size="30" fill="deeppink">Exhibition</text>
+            <text id="label3" class="menuLabel dynamicMenu" data-href="content/works.html" x="430" y="25" font-family="Lato" font-size="30" fill="springgreen">Works</text>
+            <text id="label4" class="menuLabel dynamicMenu" data-href="content/contact.html" x="580" y="25" font-family="Lato" font-size="30" fill="dodgerblue">Contact</text>
+          </svg>
+          <div id="menu-symbol" class="dynamicMenu">
+            <svg id="menu" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="48" fill="none" stroke="white" stroke-width="4"></circle>
+              <g class="dynamicMenu" id="rightpointer">
+                <line id="top-bar" x1="26" x2="74" y1="26" y2="50" stroke="white" stroke-width="4"></line>
+                <line id="bottom-bar" x1="26" x2="74" y1="74" y2="50" stroke="white" stroke-width="4"></line>
+              </g>
+              <g class="dynamicMenu" id="leftpointer">
+                <line id="top-bar" x1="26" x2="74" y1="50" y2="26" stroke="white" stroke-width="4"></line>
+                <line id="bottom-bar" x1="26" x2="74" y1="50" y2="74" stroke="white" stroke-width="4"></line>
+              </g>
+            </svg>
+          </div>
+        </div>
       </div>
     </main>
+
+    <script>
+      function hasClass(el, className) {
+        return el.classList ? el.classList.contains(className) : new RegExp('\\b'+ className+'\\b').test(el.className);
+      }
+
+      function addClass(el, className) {
+          if (el.classList) el.classList.add(className);
+          else if (!hasClass(el, className)) el.className += ' ' + className;
+      }
+
+      function removeClass(el, className) {
+          if (el.classList) el.classList.remove(className);
+          else el.className = el.className.replace(new RegExp('\\b'+ className+'\\b', 'g'), '');
+      }
+
+      var topElem = document.getElementById('backSplash');
+      var msElem = document.getElementById('menu-symbol');
+
+      function moveMenu (stay) {
+        var dynamicSelector = ".dynamicMenu";
+        var menuList = document.querySelectorAll(dynamicSelector);
+        var listLength = menuList.length, i;
+
+
+        for (i = 0; i < listLength; ++i) {
+          if (hasClass(menuList[i], 'opening')) {
+            removeClass(menuList[i], 'opening');
+            addClass(menuList[i], 'closing');
+          } else {
+            removeClass(menuList[i], 'closing');
+            addClass(menuList[i], 'opening');
+          }
+        }
+
+        if (!stay) {
+          removeClass(topElem,'opening');
+          addClass(topElem,'exiting');
+        } else if (hasClass(topElem, 'opening')) {
+            removeClass(topElem, 'opening');
+            addClass(topElem, 'closing');
+        } else {
+          removeClass(topElem, 'closing');
+          addClass(topElem, 'opening');
+        };
+
+      }
+
+
+
+
+
+      var navList = document.querySelectorAll(".menuLabel");
+      var navListLength = navList.length, navi;
+      for (navi = 0; navi < navListLength; ++navi) {
+        navList[navi].addEventListener('click', (function () {
+//          var dest = navList[navi].dataset.href;
+            var dest = navList[navi].getAttribute("data-href");
+            return function (e) {
+              moveMenu();
+  //            topElem.addEventListener('webkitAnimationEnd', function (e) {
+  //              if (e.target.id == this.id) {
+  //                this.removeEventListener('webkitAnimationEnd',arguments.callee);
+  //                this.removeEventListener('animationend',arguments.callee);
+  //                window.location.assign(dest);
+  //              }
+  //            });
+              topElem.addEventListener('animationend', function (e) {
+                if (e.target.id == this.id) {
+                  this.removeEventListener('animationend',arguments.callee);
+                  removeClass(topElem, 'exiting');
+                  window.location.assign(dest);
+                }
+              });
+              };
+            })() );
+//          topElem.addEventListener('webkitAnimationEnd', jumpTo("Callback " + navi));
+//          window.location.assign(this.dataset.href);
+
+      };
+
+
+      msElem.addEventListener('click', moveMenu);
+//      document.addEventListener('webkitAnimationEnd', function (e) {
+//        console.log(e);
+//      });
+
+//      msElem.addEventListener('webkitAnimationEnd', function(e) {
+//            console.log(e);
+//            if (e.animationName == "swipe-back")
+//                window.location.assign("content/biography.html")});
+
+    </script>
+
   </body>
 </html>

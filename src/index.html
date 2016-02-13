@@ -20,9 +20,14 @@
           <div id="menu-symbol" class="dynamicMenu">
             <svg id="menu" viewBox="0 0 100 100">
               <circle cx="50" cy="50" r="48" fill="none" stroke="white" stroke-width="4"></circle>
-              <line id="middle-bar" x1="26" x2="74" y1="50" y2="50" stroke="white" stroke-width="4"></line>
-              <line id="top-bar" x1="26" x2="74" y1="26" y2="26" stroke="white" stroke-width="4"></line>
-              <line id="bottom-bar" x1="26" x2="74" y1="74" y2="74" stroke="white" stroke-width="4"></line>
+              <g class="dynamicMenu" id="rightpointer">
+                <line id="top-bar" x1="26" x2="74" y1="26" y2="50" stroke="white" stroke-width="4"></line>
+                <line id="bottom-bar" x1="26" x2="74" y1="74" y2="50" stroke="white" stroke-width="4"></line>
+              </g>
+              <g class="dynamicMenu" id="leftpointer">
+                <line id="top-bar" x1="26" x2="74" y1="50" y2="26" stroke="white" stroke-width="4"></line>
+                <line id="bottom-bar" x1="26" x2="74" y1="50" y2="74" stroke="white" stroke-width="4"></line>
+              </g>
             </svg>
           </div>
         </div>
