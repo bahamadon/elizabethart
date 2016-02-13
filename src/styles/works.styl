@@ -3,15 +3,16 @@
 
 @keyframes swipe-across
   0%
-    left 10px
+    transform translatex(10px)
   100%
-    left 780px
+    transform translatex(780px)
 
 @keyframes swipe-back
   0%
-    left 780px
+    transform translatex(780px)
   100%
-    left 10px
+    transform translatex(10px)
+
 
 @keyframes fade-in
   0%
@@ -90,7 +91,7 @@ darkenOverlay = rgba(0, 0, 0, darken)
 
   #menu-symbol
     position relative
-    left 10px
+    transform translate(10px)
     &.opening
       animation swipe-across 0.5s linear
       animation-fill-mode forwards
