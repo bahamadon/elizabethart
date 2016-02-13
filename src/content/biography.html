@@ -3,7 +3,6 @@
     <meta charset="utf-8">
     <title>Elizabeth Heth</title>
     <link rel="stylesheet" href="../styles/bio.css">
-    <script src="../scripts/vendor/popmotion.global.js"></script>
   </head>
   <body>
     <main>
@@ -12,15 +11,20 @@
         <div id="mainhead"><h2>Elizabeth Heth</h2></div>
         <nav id="menu-container">
 
-          <svg id="menu-box" height="100" width="650" viewBox="0 0 650 100">
-            <text id="label1" class="menuLabel" x="0" y="25" font-family="Lato" font-size="30" fill="darkorange" ><a href="./biography.html">Biography</a></text>
+          <svg id="menu-box" height="100" width="750" viewBox="0 0 750 100"><svg id="menu-box" height="100" width="750" viewBox="0 0 750 100">
+            <text id="label1" class="" data-href="../content/biography.html" x="30" y="25" font-family="Lato" font-size="30" fill="darkorange" >Biography</text>
+            <text id="label2" class="menuLabel dynamicMenu" data-href="../content/exhibition.html" x="220" y="25" font-family="Lato" font-size="30" fill="deeppink">Exhibition</text>
+            <text id="label3" class="menuLabel dynamicMenu" data-href="../content/works.html" x="430" y="25" font-family="Lato" font-size="30" fill="springgreen">Works</text>
+            <text id="label4" class="menuLabel dynamicMenu" data-href="../content/contact.html" x="580" y="25" font-family="Lato" font-size="30" fill="dodgerblue">Contact</text>
           </svg>
-          <svg id="menu" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="48" fill="none" stroke="white" stroke-width="4"></circle>
-            <line id="middle-bar" x1="26" x2="74" y1="50" y2="50" stroke="white" stroke-width="4"></line>
-            <line id="top-bar" x1="26" x2="74" y1="26" y2="26" stroke="white" stroke-width="4"></line>
-            <line id="bottom-bar" x1="26" x2="74" y1="74" y2="74" stroke="white" stroke-width="4"></line>
-          </svg>
+          <div id="menu-symbol" class="dynamicMenu">
+            <svg id="menu" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="48" fill="none" stroke="black" stroke-width="4"></circle>
+              <line id="middle-bar" x1="26" x2="74" y1="50" y2="50" stroke="black" stroke-width="4"></line>
+              <line id="top-bar" x1="26" x2="74" y1="26" y2="26" stroke="black" stroke-width="4"></line>
+              <line id="bottom-bar" x1="26" x2="74" y1="74" y2="74" stroke="black" stroke-width="4"></line>
+            </svg>
+          </div>
 
         </nav>
 
@@ -29,32 +33,72 @@
           <img id="sleeping-cat" alt="painting of cat on a couch" src="../images/sleeping_cat.jpg" width="100%"/>
         </div>
         <div id='mainbar'>
-
-          Elizabeth Heth graduated the BFA program at the University of Alberta in 2008.  She continues to pursue interests in landscape and history painting, with a focus on the notion of travel and memory.
+          <p>Elizabeth Heth graduated the BFA program at the University of Alberta in 2008.  She continues to pursue interests in landscape and history painting, with a focus on the notion of travel and memory.
         </div>
       </secton>
 
       </div>
     </main>
-<!--    <script src="../scripts/bundle.js"></script> -->
-    <script>
-      var backgroundCover = document.getElementById("backPattern");
-      var backgroundCoverActor = new ui.Actor({
-        element: backgroundCover,
-        as: ui.css.map({backgroundcolor: 'background-color'}),
-        values: {
-          backgroundcolor: '#808080'
-        }
-      });
-      var backgroundFadeIn = new ui.Tween({
-        duration: 200,
-        values: {
-          backgroundcolor: '#fff'
-        }
-      });
+   <script>
+    function hasClass(el, className) {
+      return el.classList ? el.classList.contains(className) : new RegExp('\\b'+ className+'\\b').test(el.className);
+    }
 
-      backgroundCoverActor.start(backgroundFadeIn);
+    function addClass(el, className) {
+        if (el.classList) el.classList.add(className);
+        else if (!hasClass(el, className)) el.className += ' ' + className;
+    }
 
-    </script>
+    function removeClass(el, className) {
+        if (el.classList) el.classList.remove(className);
+        else el.className = el.className.replace(new RegExp('\\b'+ className+'\\b', 'g'), '');
+    }
+
+    var topElem = document.getElementById('backSplash');
+    var msElem = document.getElementById('menu-symbol');
+
+    function moveMenu () {
+      var dynamicSelector = ".dynamicMenu";
+      var menuList = document.querySelectorAll(dynamicSelector);
+      var listLength = menuList.length, i;
+
+
+      for (i = 0; i < listLength; ++i) {
+        if (hasClass(menuList[i], 'opening')) {
+          removeClass(menuList[i], 'opening');
+          addClass(menuList[i], 'closing');
+        } else {
+          removeClass(menuList[i], 'closing');
+          addClass(menuList[i], 'opening');
+        }
+      }
+    }
+
+
+
+    var navList = document.querySelectorAll(".menuLabel");
+    var navListLength = navList.length, navi;
+    for (navi = 0; navi < navListLength; ++navi) {
+      navList[navi].addEventListener('click', (function () {
+          var dest = navList[navi].getAttribute("data-href");
+          return function (e) {
+            moveMenu();
+            msElem.addEventListener('animationend', function (e) {
+              if (e.target.id == this.id) {
+                this.removeEventListener('animationend',arguments.callee);
+                window.location.assign(dest);
+              }
+          });
+          };
+        })() );
+
+    };
+
+
+    msElem.addEventListener('click', moveMenu);
+
+
+  </script>
+
   </body>
 </html>

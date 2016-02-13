@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <title>Elizabeth Heth</title>
     <link rel="stylesheet" href="../styles/bio.css">
-    <script src="../scripts/vendor/popmotion.global.js"></script>
+    <link rel="stylesheet" href="../styles/flex-images.css">
   </head>
   <body>
     <main>
@@ -12,33 +12,95 @@
         <div id="mainhead"><h2>Elizabeth Heth</h2></div>
         <nav id="menu-container">
 
-          <svg id="menu-box" height="100" width="650" viewBox="0 0 650 100"><text id="label2" class="menuLabel" x="190" y="25" font-family="Lato" font-size="30" fill="deeppink"><a href="index_old.html">Exhibition</a></text>
+          <svg id="menu-box" height="100" width="750" viewBox="0 0 750 100"><svg id="menu-box" height="100" width="750" viewBox="0 0 750 100">
+            <text id="label1" class="menuLabel dynamicMenu" data-href="../content/biography.html" x="30" y="25" font-family="Lato" font-size="30" fill="darkorange" >Biography</text>
+            <text id="label2" class="" data-href="../content/exhibition.html" x="220" y="25" font-family="Lato" font-size="30" fill="deeppink">Exhibition</text>
+            <text id="label3" class="menuLabel dynamicMenu" data-href="../content/works.html" x="430" y="25" font-family="Lato" font-size="30" fill="springgreen">Works</text>
+            <text id="label4" class="menuLabel dynamicMenu" data-href="../content/contact.html" x="580" y="25" font-family="Lato" font-size="30" fill="dodgerblue">Contact</text>
           </svg>
-          <svg id="menu" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="48" fill="none" stroke="white" stroke-width="4"></circle>
-            <line id="middle-bar" x1="26" x2="74" y1="50" y2="50" stroke="white" stroke-width="4"></line>
-            <line id="top-bar" x1="26" x2="74" y1="26" y2="26" stroke="white" stroke-width="4"></line>
-            <line id="bottom-bar" x1="26" x2="74" y1="74" y2="74" stroke="white" stroke-width="4"></line>
-          </svg>
+          <div id="menu-symbol" class="dynamicMenu">
+            <svg id="menu" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="48" fill="none" stroke="black" stroke-width="4"></circle>
+              <line id="middle-bar" x1="26" x2="74" y1="50" y2="50" stroke="black" stroke-width="4"></line>
+              <line id="top-bar" x1="26" x2="74" y1="26" y2="26" stroke="black" stroke-width="4"></line>
+              <line id="bottom-bar" x1="26" x2="74" y1="74" y2="74" stroke="black" stroke-width="4"></line>
+            </svg>
+          </div>
 
         </nav>
 
       <section>
-        <div id='sidebar'>
-          <img id="sleeping-cat" alt="painting of the historic mission of mercy flight by Wop May" src="../images/WopMayFlight.jpg" width="100%"/>
+        <div id='sidebar' class='flex-images'>
+          <div class="item" data-w="400" data-h="309">
+              <a target="_blank" href="../images/48.jpg">
+                  <img src="../images/48R.jpg">
+              </a>
+          </div>
+          <div class="item" data-w="400" data-h="315">
+              <a target="_blank" href="../images/71.jpg">
+                  <img src="../images/71R.jpg">
+              </a>
+          </div>
+          <div class="item" data-w="400" data-h="314">
+              <a target="_blank" href="../images/72.jpg">
+                  <img src="../images/72R.jpg">
+              </a>
+          </div>
+          <div class="item" data-w="400" data-h="307">
+              <a target="_blank" href="../images/89.jpg">
+                  <img src="../images/89R.jpg">
+              </a>
+          </div>
+          <div class="item" data-w="400" data-h="312">
+              <a target="_blank" href="../images/123.jpg">
+                  <img src="../images/123R.jpg">
+              </a>
+          </div>
+          <div class="item" data-w="400" data-h="309">
+              <a target="_blank" href="../images/124.jpg">
+                  <img src="../images/124R.jpg">
+              </a>
+          </div>
+          <div class="item" data-w="400" data-h="315">
+              <a target="_blank" href="../images/133.jpg">
+                  <img src="../images/133R.jpg">
+              </a>
+          </div>
+          <div class="item" data-w="400" data-h="309">
+              <a target="_blank" href="../images/134.jpg">
+                  <img src="../images/134R.jpg">
+              </a>
+          </div>
+          <div class="item" data-w="400" data-h="316">
+              <a target="_blank" href="../images/135.jpg">
+                  <img src="../images/135.jpg">
+              </a>
+          </div>
+          <div class="item" data-w="400" data-h="315">
+              <a target="_blank" href="../images/136.jpg">
+                  <img src="../images/136R.jpg">
+              </a>
+          </div>
+          <span style="color: #7f7f7f">Click an image to see an enlarged view.</span>
         </div>
         <div id='mainbar'>
+          <h2>YXD 1927 – 2013, Air</h2>
+          <h3>Alberta Lottery Fund Art Gallery</h3>
+
+          <p>
           Elizabeth Heth, a native Edmontonian, discovered a greater connection with
           history through the passing of the city centre airport into the province's
           history.  During the time in which there was some contention whether the airport
           would be closed, she found that she was receiving information from both sides
-          and was intrigued by the passion and vitriol.  To explore the issue she found
+          and was intrigued by the passion and vitriol.
+          <p>To explore the issue she found
           contacts who related stories regarding the airport, and the historical
           significance.  In standing on what had once been commonly known as Blatchford
           field there seemed to be an interrupt, and a suspension, in the significance of
           human history.  The aircraft were characters onto themselves with a strong
           similarity to their shorter-lived human counterparts, requiring air, fuel, care
-          and purpose.  In the collection of these histories and complexities, Elizabeth
+          and purpose.
+          <p>In the collection of these histories and complexities, Elizabeth
           found she was approaching these paintings less as snapshot of history and more
           as portraits, finding character and story in architecture as lovely as the
           familiar human form.
@@ -48,24 +110,72 @@
 
       </div>
     </main>
+    <script src="../scripts/vendor/flex-images.min.js"></script>
 <!--    <script src="../scripts/bundle.js"></script> -->
     <script>
-      var backgroundCover = document.getElementById("backPattern");
-      var backgroundCoverActor = new ui.Actor({
-        element: backgroundCover,
-        as: ui.css.map({backgroundcolor: 'background-color'}),
-        values: {
-          backgroundcolor: '#808080'
+    function hasClass(el, className) {
+      return el.classList ? el.classList.contains(className) : new RegExp('\\b'+ className+'\\b').test(el.className);
+    }
+
+    function addClass(el, className) {
+        if (el.classList) el.classList.add(className);
+        else if (!hasClass(el, className)) el.className += ' ' + className;
+    }
+
+    function removeClass(el, className) {
+        if (el.classList) el.classList.remove(className);
+        else el.className = el.className.replace(new RegExp('\\b'+ className+'\\b', 'g'), '');
+    }
+
+    var topElem = document.getElementById('backPattern');
+    var msElem = document.getElementById('menu-symbol');
+
+    function moveMenu () {
+      var dynamicSelector = ".dynamicMenu";
+      var menuList = document.querySelectorAll(dynamicSelector);
+      var listLength = menuList.length, i;
+
+
+      for (i = 0; i < listLength; ++i) {
+        if (hasClass(menuList[i], 'opening')) {
+          removeClass(menuList[i], 'opening');
+          addClass(menuList[i], 'closing');
+        } else {
+          removeClass(menuList[i], 'closing');
+          addClass(menuList[i], 'opening');
         }
-      });
-      var backgroundFadeIn = new ui.Tween({
-        duration: 200,
-        values: {
-          backgroundcolor: '#fff'
-        }
+      }
+    }
+
+
+
+    var navList = document.querySelectorAll(".menuLabel");
+    var navListLength = navList.length, navi;
+    for (navi = 0; navi < navListLength; ++navi) {
+      navList[navi].addEventListener('click', (function () {
+          var dest = navList[navi].getAttribute("data-href");
+          return function (e) {
+            moveMenu();
+            msElem.addEventListener('animationend', function (e) {
+              if (e.target.id == this.id) {
+                this.removeEventListener('animationend',arguments.callee);
+                window.location.assign(dest);
+              }
+          });
+          };
+        })() );
+
+    };
+
+
+    msElem.addEventListener('click', moveMenu);
+
+      new flexImages( {
+        selector: '#sidebar',
+        rowHeight: 100,
+        truncate: false
       });
 
-      backgroundCoverActor.start(backgroundFadeIn);
 
     </script>
   </body>

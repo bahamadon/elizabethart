@@ -7,15 +7,15 @@
   </head>
   <body>
     <main>
-      <div id="backSplash" class="darken dynamicMenu">
+      <div id="backSplash" class="darken">
         <div id="subhead">the art of</div>
         <div id="mainhead"><h2>Elizabeth Heth</h2></div>
         <div id="menu-container">
-          <svg id="menu-box" height="100" width="700" viewBox="0 0 700 100">
-            <text id="label1" class="menuLabel dynamicMenu" data-href="content/biography.html" x="0" y="25" font-family="Lato" font-size="30" fill="darkorange" >Biography</text>
-            <text id="label2" class="menuLabel dynamicMenu" data-href="content/exhibition.html" x="190" y="25" font-family="Lato" font-size="30" fill="deeppink">Exhibition</text>
-            <text id="label3" class="menuLabel dynamicMenu" data-href="content/works.html" x="400" y="25" font-family="Lato" font-size="30" fill="springgreen">Works</text>
-            <text id="label4" class="menuLabel dynamicMenu" data-href="content/contact.html" x="550" y="25" font-family="Lato" font-size="30" fill="dodgerblue">Contact</text>
+          <svg id="menu-box" height="100" width="750" viewBox="0 0 750 100">
+            <text id="label1" class="menuLabel dynamicMenu" data-href="content/biography.html" x="30" y="25" font-family="Lato" font-size="30" fill="darkorange" >Biography</text>
+            <text id="label2" class="menuLabel dynamicMenu" data-href="content/exhibition.html" x="220" y="25" font-family="Lato" font-size="30" fill="deeppink">Exhibition</text>
+            <text id="label3" class="menuLabel dynamicMenu" data-href="content/works.html" x="430" y="25" font-family="Lato" font-size="30" fill="springgreen">Works</text>
+            <text id="label4" class="menuLabel dynamicMenu" data-href="content/contact.html" x="580" y="25" font-family="Lato" font-size="30" fill="dodgerblue">Contact</text>
           </svg>
           <div id="menu-symbol" class="dynamicMenu">
             <svg id="menu" viewBox="0 0 100 100">
@@ -47,7 +47,7 @@
       var topElem = document.getElementById('backSplash');
       var msElem = document.getElementById('menu-symbol');
 
-      function moveMenu () {
+      function moveMenu (stay) {
         var dynamicSelector = ".dynamicMenu";
         var menuList = document.querySelectorAll(dynamicSelector);
         var listLength = menuList.length, i;
@@ -62,14 +62,21 @@
             addClass(menuList[i], 'opening');
           }
         }
+
+        if (!stay) {
+          removeClass(topElem,'opening');
+          addClass(topElem,'exiting');
+        } else if (hasClass(topElem, 'opening')) {
+            removeClass(topElem, 'opening');
+            addClass(topElem, 'closing');
+        } else {
+          removeClass(topElem, 'closing');
+          addClass(topElem, 'opening');
+        };
+
       }
 
-      function jumpTo (hreference) {
-        var dest = hreference;
-        return function () {
-          console.log(dest);
-        }
-      }
+
 
 
 
@@ -79,16 +86,24 @@
         navList[navi].addEventListener('click', (function () {
 //          var dest = navList[navi].dataset.href;
             var dest = navList[navi].getAttribute("data-href");
-          return function (e) {
-            moveMenu();
-            topElem.addEventListener('webkitAnimationEnd', function (e) {
-              if (e.target.id == this.id) {
-                this.removeEventListener('webkitAnimationEnd',arguments.callee);
-                window.location.assign(dest);
-              }
-            });
-            };
-          })() );
+            return function (e) {
+              moveMenu();
+  //            topElem.addEventListener('webkitAnimationEnd', function (e) {
+  //              if (e.target.id == this.id) {
+  //                this.removeEventListener('webkitAnimationEnd',arguments.callee);
+  //                this.removeEventListener('animationend',arguments.callee);
+  //                window.location.assign(dest);
+  //              }
+  //            });
+              topElem.addEventListener('animationend', function (e) {
+                if (e.target.id == this.id) {
+                  this.removeEventListener('animationend',arguments.callee);
+                  removeClass(topElem, 'exiting');
+                  window.location.assign(dest);
+                }
+              });
+              };
+            })() );
 //          topElem.addEventListener('webkitAnimationEnd', jumpTo("Callback " + navi));
 //          window.location.assign(this.dataset.href);
 
