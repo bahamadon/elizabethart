@@ -7,7 +7,7 @@
   </head>
   <body>
     <main>
-      <div id="backSplash" class="darken dynamicMenu">
+      <div id="backSplash" class="darken">
         <div id="subhead">the art of</div>
         <div id="mainhead"><h2>Elizabeth Heth</h2></div>
         <div id="menu-container">
@@ -52,7 +52,7 @@
       var topElem = document.getElementById('backSplash');
       var msElem = document.getElementById('menu-symbol');
 
-      function moveMenu () {
+      function moveMenu (stay) {
         var dynamicSelector = ".dynamicMenu";
         var menuList = document.querySelectorAll(dynamicSelector);
         var listLength = menuList.length, i;
@@ -67,6 +67,17 @@
             addClass(menuList[i], 'opening');
           }
         }
+
+        if (!stay) {
+          removeClass(topElem,'opening');
+          addClass(topElem,'exiting');
+        } else if (hasClass(topElem, 'opening')) {
+            removeClass(topElem, 'opening');
+            addClass(topElem, 'closing');
+        } else {
+          removeClass(topElem, 'closing');
+          addClass(topElem, 'opening');
+        };
 
       }
 
@@ -92,6 +103,7 @@
               topElem.addEventListener('animationend', function (e) {
                 if (e.target.id == this.id) {
                   this.removeEventListener('animationend',arguments.callee);
+//                  removeClass(topElem, 'exiting');
                   window.location.assign(dest);
                 }
               });
@@ -104,6 +116,10 @@
 
 
       msElem.addEventListener('click', moveMenu);
+
+      window.addEventListener('pageshow', function(event) {
+        removeClass(topElem, 'exiting');
+      }, false);
 //      document.addEventListener('webkitAnimationEnd', function (e) {
 //        console.log(e);
 //      });
